@@ -4,6 +4,7 @@
 }
 
 <h2>商品列表</h2>
+<div style="float:right">@Html.ActionLink("新增", "Creat", new { @class = "btn btn-default" })</div>
 @if (TempData["ResultMessage"] != null)//如果有訊息則顯示
 {
     @Html.Label("info", (string)TempData["ResultMessage"], new { @class = "text-info" })

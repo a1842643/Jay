@@ -25,5 +25,32 @@ namespace ShoppingGo.Controllers
 
             }
         }
+        public ActionResult Creat()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Creat(Models.Product PostBackData)
+        {
+            //資料驗證
+            if (this.ModelState.IsValid)
+            {
+                using (Models.ShoppingGoDataEntities db = new Models.ShoppingGoDataEntities())
+                {
+                    //將新增好的資料放置Product表單裡
+                    db.Product.Add(PostBackData);
+
+                    //儲存異動資料
+                    db.SaveChanges();
+
+                    //回傳成功訊息
+                    TempData["ResultMessage"] = string.Format("商品[{0}]成功編輯", PostBackData.Name);
+
+                    //回Index
+                    return RedirectToAction("Index");
+                }
+            }
+                    return View();
+        }
     }
 }

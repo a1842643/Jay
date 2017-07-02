@@ -11,17 +11,27 @@ namespace ShoppingGo.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Product
     {
+        [Display(Name = "商品編號")]
         public int Id { get; set; }
+        [Display(Name = "商品名稱")]
         public string Name { get; set; }
+        [Display(Name = "商品描述")]
         public string Description { get; set; }
+        [Display(Name = "商品分類編號")]
         public int CategoryId { get; set; }
+        [Display(Name = "商品價格")]
         public decimal Price { get; set; }
+        [Display(Name = "商品生效日")]
         public Nullable<System.DateTime> PublishDate { get; set; }
+        [Display(Name = "商品狀態")]
         public Nullable<bool> Status { get; set; }
+        [Display(Name = "商品預設圖片編號")]
         public Nullable<int> DefaultImageId { get; set; }
+        [Display(Name = "商品庫存量")]
         public int Quantity { get; set; }
     }
 }
