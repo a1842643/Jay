@@ -52,5 +52,49 @@ namespace ShoppingGo.Controllers
             }
                     return View();
         }
+
+        public ActionResult Edit(int id)
+        {
+            using (Models.ShoppingGoDataEntities db = new Models.ShoppingGoDataEntities())
+            {
+                //抓取Id相符的資料
+                var result = (from p in db.Product where p.Id == id select p).FirstOrDefault();
+                if (result != default(Models.Product))
+                {
+                    return View(result);
+                }
+                else
+                {
+                    //如果沒資料則會上Index
+                    TempData["ResultMessage"] = "資料有誤，請重新操作";
+                    return RedirectToAction("Index");
+                }
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit(Models.Product PostBackData)
+        {
+            using (Models.ShoppingGoDataEntities db = new Models.ShoppingGoDataEntities())
+            {
+                //抓取Id相符的資料
+                var result = (from p in db.Product where p.Id == PostBackData.Id select p).FirstOrDefault();
+
+                //儲存使用者更便資料
+                result.Name = PostBackData.Name;
+                result.Description = PostBackData.Description;
+                result.CategoryId = PostBackData.CategoryId;
+                result.Price = PostBackData.Price;
+                result.PublishDate = PostBackData.PublishDate;
+                result.Status = PostBackData.Status;
+                result.DefaultImageId = PostBackData.DefaultImageId;
+                result.Quantity = PostBackData.Quantity;
+
+                db.SaveChanges();
+
+                //回傳成功訊息
+                TempData["ResultMessage"] = string.Format("商品[{0}]成功編輯", PostBackData.Id);
+                return RedirectToAction("Index");
+            }
+        }
     }
 }
