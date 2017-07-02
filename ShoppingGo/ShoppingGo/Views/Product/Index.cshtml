@@ -1,0 +1,62 @@
+﻿@model List<ShoppingGo.Models.Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>商品列表</h2>
+@if (TempData["ResultMessage"] != null)//如果有訊息則顯示
+{
+    @Html.Label("info", (string)TempData["ResultMessage"], new { @class = "text-info" })
+}
+<table class="table">
+    <thead>
+        <tr>
+            <td>
+                操作
+            </td>
+            <td>
+                編號
+            </td>
+            <td>
+                名稱
+            </td>
+            <td>
+                描述
+            </td>
+            <td>
+                售價
+            </td>
+            <td>
+                庫存
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pd in this.Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink("編輯", "Edit", new { id = pd.Id }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("刪除", "Delete", new { id = pd.Id }, new { @class = "btn btn-default" })
+                </td>
+                <td>
+                    @pd.Id
+                </td>
+                <td>
+                    @pd.Name
+                </td>
+                <td>
+                    @pd.Description
+                </td>
+                <td style="text-align:right">
+                    @pd.Price
+                </td>
+                <td style="text-align:right">
+                    @pd.Quantity
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
