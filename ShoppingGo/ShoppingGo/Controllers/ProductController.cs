@@ -50,7 +50,7 @@ namespace ShoppingGo.Controllers
                     return RedirectToAction("Index");
                 }
             }
-                    return View();
+            return View();
         }
 
         public ActionResult Edit(int id)
@@ -94,6 +94,34 @@ namespace ShoppingGo.Controllers
                 //回傳成功訊息
                 TempData["ResultMessage"] = string.Format("商品[{0}]成功編輯", PostBackData.Id);
                 return RedirectToAction("Index");
+            }
+        }
+
+        public ActionResult Delete(Models.Product PostBackData)
+        {
+            using (Models.ShoppingGoDataEntities db = new Models.ShoppingGoDataEntities())
+            {
+                //抓取Id相符的資料
+                var result = (from p in db.Product where p.Id == PostBackData.Id select p).FirstOrDefault();
+                if (result != default(Models.Product))
+                {
+                    db.Product.Remove(result);
+
+                    //儲存
+                    db.SaveChanges();
+
+                //回傳成功訊息
+                TempData["ResultMessage"] = string.Format("商品[{0}]成功刪除", PostBackData.Id);
+                return RedirectToAction("Index");
+                }
+                else
+                {
+                    //如果沒資料則會上Index
+                    TempData["ResultMessage"] = "指定資料不存在，無法刪除，請重新操作";
+                    return RedirectToAction("Index");
+                }
+
+
             }
         }
     }
