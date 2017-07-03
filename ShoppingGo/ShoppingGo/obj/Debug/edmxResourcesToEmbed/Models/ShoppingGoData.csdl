@@ -11,7 +11,7 @@
     <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="PublishDate" Type="DateTime" Precision="0" />
     <Property Name="Status" Type="Boolean" />
-    <Property Name="DefaultImageId" Type="Int32" />
+    <Property Name="DefaultImageURL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Quantity" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityContainer Name="ShoppingGoDataEntities" annotation:LazyLoadingEnabled="true">

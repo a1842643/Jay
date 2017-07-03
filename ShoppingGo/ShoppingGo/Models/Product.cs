@@ -29,8 +29,8 @@ namespace ShoppingGo.Models
         public Nullable<System.DateTime> PublishDate { get; set; }
         [Display(Name = "商品狀態")]
         public Nullable<bool> Status { get; set; }
-        [Display(Name = "商品預設圖片編號")]
-        public Nullable<int> DefaultImageId { get; set; }
+        [Display(Name = "商品圖片連結名稱")]
+        public string DefaultImageURL { get; set; }
         [Display(Name = "商品庫存量")]
         public int Quantity { get; set; }
     }

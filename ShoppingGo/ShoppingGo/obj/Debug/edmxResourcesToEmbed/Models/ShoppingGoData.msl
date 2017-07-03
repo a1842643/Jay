@@ -11,7 +11,7 @@
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
           <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="DefaultImageId" ColumnName="DefaultImageId" />
+          <ScalarProperty Name="DefaultImageURL" ColumnName="DefaultImageURL" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -86,7 +86,7 @@ namespace ShoppingGo.Controllers
                 result.Price = PostBackData.Price;
                 result.PublishDate = PostBackData.PublishDate;
                 result.Status = PostBackData.Status;
-                result.DefaultImageId = PostBackData.DefaultImageId;
+                result.DefaultImageURL = PostBackData.DefaultImageURL;
                 result.Quantity = PostBackData.Quantity;
 
                 db.SaveChanges();
